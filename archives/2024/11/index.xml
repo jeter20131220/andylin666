@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2024/11 on Andys Notes</title>
+    <link>https://www.andylin666.com/archives/2024/11/</link>
+    <description>Recent content in 2024/11 on Andys Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language><atom:link href="https://www.andylin666.com/archives/2024/11/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Highlight.js 主題自定義：為你的程式碼區塊選擇和創建自定義配色方案</title>
+      <link>https://www.andylin666.com/highlightjs/</link>
+      <pubDate>Wed, 13 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.andylin666.com/highlightjs/</guid>
+      <description>創建一個技術部落格胥杳剪貼大量的程式，但是多數佈景主題的code block幾乎都是黑底白字或是白底黑字。對於我們這些習慣於有語法突顯(Syntax Highlighting)，可能會不太習慣，於是在網路上找到一個非常強大的語法突顯工具，讓我們在網頁上也可以點亮我們寫在部落格當中的code。
+Getting Started with highlight.js 引入highlight.js CDN &amp;lt;link href=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!-- Highlight.js 自動掃描頁面中的程式碼區塊並應用Syntax Highlighting --&amp;gt; &amp;lt;script&amp;gt;hljs.highlightAll();&amp;lt;/script&amp;gt;  這幾個CDN只有包含特定幾個常見的程式語言的Syntax Highlighting，如果本身有需要包含go語言的話還需要引入
+&amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  npm install highlight.js npm install highlight.js  javascript // JavaScript: todo list function const todos = []; function addTodo(task) { todos.push(task); console.log(`Task &amp;quot;${task}&amp;quot; added to the list.`); } function showTodos() { console.log(&amp;quot;To-Do List:&amp;quot;); todos.forEach((task, index) =&amp;gt; { console.log(`${index + 1}. ${task}`); }); } addTodo(&amp;quot;Learn JavaScript&amp;quot;); addTodo(&amp;quot;Build a to-do app&amp;quot;); showTodos();  python # Python: simple todo list function todos = [] def add_todo(task): todos.</description>
+    </item>
+    
+  </channel>
+</rss>

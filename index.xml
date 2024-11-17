@@ -6,7 +6,18 @@
     <description>Recent content on Andys Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 13 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.andylin666.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.andylin666.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Highlight.js 主題自定義：為你的程式碼區塊選擇和創建自定義配色方案</title>
+      <link>https://www.andylin666.com/highlightjs/</link>
+      <pubDate>Wed, 13 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.andylin666.com/highlightjs/</guid>
+      <description>創建一個技術部落格胥杳剪貼大量的程式，但是多數佈景主題的code block幾乎都是黑底白字或是白底黑字。對於我們這些習慣於有語法突顯(Syntax Highlighting)，可能會不太習慣，於是在網路上找到一個非常強大的語法突顯工具，讓我們在網頁上也可以點亮我們寫在部落格當中的code。
+Getting Started with highlight.js 引入highlight.js CDN &amp;lt;link href=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!-- Highlight.js 自動掃描頁面中的程式碼區塊並應用Syntax Highlighting --&amp;gt; &amp;lt;script&amp;gt;hljs.highlightAll();&amp;lt;/script&amp;gt;  這幾個CDN只有包含特定幾個常見的程式語言的Syntax Highlighting，如果本身有需要包含go語言的話還需要引入
+&amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  npm install highlight.js npm install highlight.js  javascript // JavaScript: todo list function const todos = []; function addTodo(task) { todos.push(task); console.log(`Task &amp;quot;${task}&amp;quot; added to the list.`); } function showTodos() { console.log(&amp;quot;To-Do List:&amp;quot;); todos.forEach((task, index) =&amp;gt; { console.log(`${index + 1}. ${task}`); }); } addTodo(&amp;quot;Learn JavaScript&amp;quot;); addTodo(&amp;quot;Build a to-do app&amp;quot;); showTodos();  python # Python: simple todo list function todos = [] def add_todo(task): todos.</description>
+    </item>
+    
     <item>
       <title>[GitHub]如何快速將自訂域名綁定到GitHubPages(適用於多數域名註冊商)</title>
       <link>https://www.andylin666.com/quickly-bind-domain-github-pages/</link>
@@ -22,7 +33,7 @@ Host: @ 185.199.108.153 185.199.109.153 185.199.110.153 185.199.111.153  要注�
 這邊需要確保，確保在 GitHub 儲存庫的設置中，Custom domain 部分正確設置為 你在域名註冊商買的網址，並且在 GitHub Pages 部分選擇了正確的分支來部署。
 這邊可能會跑一段時間，跑完之後只要出現以下畫面，點擊Visit site，就可以看到自己的網站了。
 總結 以下幾點都確認沒有錯就不會有問題了，
- 綁定申請好的網域  CNAME 記錄： DNS 設定當中需要你的 Github 帳號.github.io A 記錄:綁定185.199.108.153、185.199.109.153、185.199.110.153、 185.199.111.153   在 GitHub 上設置 GitHub Pages  Custom domain為購買好的網址    GitHubPages這邊會跟你說大約需要24-48小時，但是如果你真的都沒有設定錯的話，一般不需要這麼久。如果超過一天以上都沒有連線成功的話，可以直接重新設定了。若是有遇到問題歡迎詢問，若是真的有超過24小時才生效也歡迎留言給我。</description>
+ 綁定申請好的網域  CNAME 記錄： DNS 設定當中需要你的 Github 帳號.github.io A 記錄:綁定185.199.108.153、185.199.109.153、185.199.110.153、 185.199.111.153   在 GitHub 上設置 GitHub Pages  Custom domain為購買好的網址    使用GitHubPages，的好處就是免費，你完全不需要付server的錢，但是會有流量的限制，網站在建造初期的時候GitHubPages是一個非常好的選擇。</description>
     </item>
     
     <item>
