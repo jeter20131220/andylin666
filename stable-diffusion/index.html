@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+
+<html lang="zh-tw">
+<head>
+    
+    
+    <title>Andys Notes | 完整 Stable Diffusion 教學：從 Colab 到本地端，快速上手 Web UI 生成精美圖像</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" sizes="64x64" href='/favicon/favicon.png' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Andys Notes | 完整 Stable Diffusion 教學：從 Colab 到本地端，快速上手 Web UI 生成精美圖像" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.85bc548bd9a6d06929e44b92bd8aa204988eb9c13691500364ef051c77ce61b6.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="本篇教學將指導你如何在 Google Colab 和本地端安裝 Stable Diffusion Web UI，輕鬆設置並運行 AI 圖像生成，快速創作高質量數位藝術作品。">
+<meta property="og:site_name" content="Andys Notes">
+<meta property="og:description" content="本篇教學將指導你如何在 Google Colab 和本地端安裝 Stable Diffusion Web UI，輕鬆設置並運行 AI 圖像生成，快速創作高質量數位藝術作品。">
+<meta property="og:url" content="https://www.andylin666.com/stable-diffusion/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="https://www.andylin666.com/stable-diffusion/">
+
+<meta name="twitter:description" content="本篇教學將指導你如何在 Google Colab 和本地端安裝 Stable Diffusion Web UI，輕鬆設置並運行 AI 圖像生成，快速創作高質量數位藝術作品。">
+<meta property="article:published_time" content="2024-12-03T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2024-12-03T00:00:00&#43;00:00">
+
+
+
+
+
+    
+<meta property="og:image" content="https://www.andylin666.com/img/stable-diffusion-cover.webp">
+<meta property="og:image:url" content="https://www.andylin666.com/img/stable-diffusion-cover.webp">
+    
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/vs2015.min.css" rel="stylesheet">
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <script>hljs.highlightAll();</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7GL3FWMNX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Z7GL3FWMNX');
+    </script>
+    <i class="dark hidden"></i>
+    <a href="" target="_blank"></a>
+</head><body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="bg-gray-800">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+            <div class="flex items-center flex-no-shrink bg-gray-800 text-white mr-6">
+                <a href="https://www.andylin666.com/"><span class="font-semibold text-2xl tracking-tight">Andys Notes</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    
+                </div>
+                <button id="hamburgerbtn" style="display: none;"
+                    class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                    <a href="/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        Home
+                    </a>
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    
+                    
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script><div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+  
+  <div class="col-span-3 lg:col-span-2 dark:text-white">
+    
+      <div class="bg-white dark:bg-warmgray-900 p-5 mb-4">
+        <h1 class="mb-2 text-4xl font-bold">完整 Stable Diffusion 教學：從 Colab 到本地端，快速上手 Web UI 生成精美圖像</h1>
+        <aside id="meta">
+          <div>
+            <section>
+              
+            </section>
+            
+            <div id="tags">
+              <span class="icon-local_offer mr-1"></span>
+              
+              <a href='https://www.andylin666.com/tags/stable-diffusion'>stable-diffusion</a> |
+              
+            </div>
+            
+          </div>
+        </aside>
+        
+        <img class="py-4" src="https://www.andylin666.com/img/stable-diffusion-cover.webp">
+        
+        
+        <aside>
+        </aside>
+        <div class="prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert mt-5">
+          <p></p>
+          <div class="tableofcontent">
+            <div class="tableofcontent-container">
+              <p class="toc-title">目錄</p>
+              <nav id="TableOfContents">
+  <ul>
+    <li><a href="#本地端部署stable-diffusion-webui">本地端部署Stable Diffusion WebUI</a></li>
+    <li><a href="#colab-部署stable-diffusion-webui">Colab 部署Stable Diffusion WebUI</a>
+      <ul>
+        <li><a href="#step1設定-google-colab-環境">Step1：設定 Google Colab 環境</a></li>
+        <li><a href="#step2安裝必要的程式庫和依賴項">Step2：安裝必要的程式庫和依賴項</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+          </div>
+
+          <h2 id="本地端部署stable-diffusion-webui">本地端部署Stable Diffusion WebUI</h2>
+<p>我的電腦規格：</p>
+<ul>
+<li>系統：macOSMonterey</li>
+<li>GPU：Apple M1
+<ul>
+<li>VRAM：共享系統（最大16GB）</li>
+</ul>
+</li>
+<li>RAM：16GB (CPU和GPU共享)</li>
+</ul>
+<p>要先裝python3.10，如果沒有安裝的要去裝python3.10。</p>
+<div class="code-block">
+    <button class="copy-btn">Copy</button>
+    <pre class="code-container"><code class="hljs bash">
+brew install cmake protobuf rust python@3.10 git wget
+</code></pre>
+</div>
+<p><strong>git clone Stable Diffusion WebUI</strong>
+<div class="code-block">
+    <button class="copy-btn">Copy</button>
+    <pre class="code-container"><code class="hljs bash">
+git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui
+</code></pre>
+</div></p>
+<p><strong>安裝stable-diffusion-webui</strong></p>
+<pre><code>cd stable-diffusion-webui
+</code></pre>
+<p>找到你剛剛gitclone 下來的目錄，然後輸入<code>./webui.sh</code>，第一次跑要跑比較久。如果有遇到錯誤的話再把錯誤貼上google，去慢慢解。</p>
+<p><strong>下載Model</strong></p>
+<p>如果在安裝AUTOMATIC1111，發現你電腦沒有任何繪圖模型，系統會自動安裝1-5-pruned-emaonly.safetensors，這邊如果要更換其他模型，可以去 Hugging Face下載。</p>
+<ul>
+<li><a target="_blank" href="https://huggingface.co/">Hugging Face</a></li>
+</ul>
+<p>載完之後把.<strong>ckpt</strong>或是.<strong>safetensors</strong>放到stable-diffusion-webui/models/Stable-diffusion，就可以使用了。</p>
+<p>這邊補充一下Stable-diffusion有幾個比較重要的資料夾</p>
+<ul>
+<li><strong>extensions：</strong> 用來擴展 Web UI 功能的插件。</li>
+<li><strong>models/stable-diffusion：</strong> 存放 Stable Diffusion 基本模型文件。</li>
+<li><strong>outputs：</strong> 存放生成的圖像和其他輸出資料。</li>
+</ul>
+<p>安裝完成後，也將models放到指定目錄之後，就可以開始算圖了，這邊先是算一張圖。</p>
+<p><img src="/img/blog/automatic1111.webp" alt="AUTOMATIC1111"></p>
+<p>由於我的電腦規格實在是太差了，我算了好幾張失敗品，好幾次都跑到我的mac m1 直接關機，因為mac m1 gpu跟cpu是共用記憶體，所以VRAM非常不夠，我剛跑幾張就顯示記憶體已滿，而且幾乎高解析度都要跑10分鐘以上。這邊放上失敗品，這還是跑了10多分鐘的結果- -</p>
+<p><img src="/img/blog/low.webp" alt="low"></p>
+<p>如果條件允許的話，最好還是去買一張12GB VRAM以上的Nvidia GPU。不過也是有替代方案，就是使用線上服務。</p>
+<!-- 看到這幾張圖，我的眼淚真的是快流出來了，從一週前開始跑stable-diffusion終於有一張像樣的圖了😭，好幾次我的mac m1 都直接跑到關機。
+
+不然我之前的圖不是長這樣....
+
+就是這樣.....
+
+幾乎沒有一個人樣，這裡我也想看大家算出來的失敗品，這樣比較不孤單，我在網路上看過很多漂亮的做作品，但是沒看過滿滿的失敗品，我開放一個空間讓大家上傳毀容的圖歡迎分享。 -->
+<h2 id="colab-部署stable-diffusion-webui">Colab 部署Stable Diffusion WebUI</h2>
+<p>Google Colab 就提供了很多運算資源即使是免費版的也有 Tesla K80 或 T4 GPU，</p>
+<p>如何查看google colab gpu用量</p>
+<p>這邊把部署工作步驟快速帶過，以下代碼只有安裝基本款，如果需要其他的擴展功能需要額外安裝，往後的文章我也會推薦擴展功能。</p>
+<h3 id="step1設定-google-colab-環境">Step1：設定 Google Colab 環境</h3>
+<ul>
+<li>開啟 Google Colab：造訪 Google Colab 網站並建立一個新的筆記本。</li>
+<li>啟用GPU:點擊&quot;執行階段&quot;&gt;變更執行階段類型&gt;選擇T4 GPU ，然後點擊保存。</li>
+</ul>
+<p>備註：(補充一下NVIDIA Tesla T4 GPU)</p>
+<h3 id="step2安裝必要的程式庫和依賴項">Step2：安裝必要的程式庫和依賴項</h3>
+<p><strong>掛載 Google Drive</strong> :
+<div class="code-block">
+    <button class="copy-btn">Copy</button>
+    <pre class="code-container"><code class="hljs python">
+from google.colab import drive 
+drive.mount('/content/drive')
+</code></pre>
+</div></p>
+<p>這主要是加載你的雲端資料夾，將等等需要安裝的程式都存到google 雲端硬碟上。</p>
+<p><strong>建立一個資料夾來儲存 Stable Diffusion WebUI 文件：</strong>
+<div class="code-block">
+    <button class="copy-btn">Copy</button>
+    <pre class="code-container"><code class="hljs bash">
+!mkdir /content/drive/MyDrive/sd-webui-files
+</code></pre>
+</div></p>
+<p><strong>安装 PyTorch、torchvision 和 torchaudio：</strong>
+<div class="code-block">
+    <button class="copy-btn">Copy</button>
+    <pre class="code-container"><code class="hljs bash">
+!pip install -q torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2+cu118 torchtext==0.15.2 torchdata==0.6.1 --extra-index-url https://download.pytorch.org/whl/cu118 -U
+</code></pre>
+</div></p>
+<p><strong>安装 xformers 和 triton：</strong>
+<div class="code-block">
+    <button class="copy-btn">Copy</button>
+    <pre class="code-container"><code class="hljs bash">
+!pip install -q xformers==0.0.20 triton==2.0.0 gradio_client==0.2.7 -U
+</code></pre>
+</div></p>
+<p><strong>Clone Stable Diffusion WebUI：</strong>
+<div class="code-block">
+    <button class="copy-btn">Copy</button>
+    <pre class="code-container"><code class="hljs bash">
+!git clone --depth=1 https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/drive/MyDrive/sd-webui-files/stable-diffusion-webui
+</code></pre>
+</div></p>
+<p><strong>下載 Stable Diffusion 模型</strong>
+<div class="code-block">
+    <button class="copy-btn">Copy</button>
+    <pre class="code-container"><code class="hljs bash">
+!wget -nc -P /content/drive/MyDrive/sd-webui-files/stable-diffusion-webui/models/Stable-diffusion https://huggingface.co/andite/anything-v4.0/resolve/main/anything-v4.5-pruned.safetensors
+</code></pre>
+</div></p>
+<ul>
+<li>!wget: 使用 wget 工具下載檔案。</li>
+<li>-nc: 如果檔案已存在，則不要重新下載。</li>
+<li>-P: 指定下載檔案的儲存路徑。</li>
+</ul>
+<p>下載模型這邊需要特別注意的是，現在的Huggingface 似乎需要拿到Hugging Face Token，所以這邊需要登入huggingface。</p>
+<ul>
+<li><a target="_blank" href="https://huggingface.co/">Hugging Face</a></li>
+</ul>
+<p>如果沒有帳號則需要註冊一組點選&quot;Sign Up&quot;，有的話點選&quot;Log In&quot;。</p>
+<p><img src="/img/blog/hugginghacetoken5.webp" alt="Hugging Face Token"></p>
+<p>登入完後會看到這個畫面，然後點選&quot;右上角頭像&quot;，接著點選&quot;Access Tokens&quot;
+<img src="/img/blog/hugginghacetoken1.webp" alt="Hugging Face Token"></p>
+<p>看到這個畫面後點選&quot;Create New token&quot;</p>
+<p><img src="/img/blog/hugginghacetoken2.webp" alt="Hugging Face Token"></p>
+<p>輸入&quot;Token name&quot;後，滑到最下面點選&quot;Create token&quot;
+<img src="/img/blog/hugginghacetoken4.webp" alt="Hugging Face Token"></p>
+<p>就會得到這個畫面，一定要複製保存起來，這是一次性的視窗，關掉就沒了。</p>
+<p><img src="/img/blog/huggingfacetoken6.webp" alt="Hugging Face Token"></p>
+<p>拿到Hugging Face Token，應該是hf_xxxxxxxxx開頭，拿到之後將Token帶入你的wget的指令當中的header。</p>
+<div class="code-block">
+    <button class="copy-btn">Copy</button>
+    <pre class="code-container"><code class="hljs bash">
+!wget --header="Authorization: Bearer hf_xxxxxxxx" -P "/content/drive/MyDrive/sd-webui-files/stable-diffusion-webui/models/Stable-diffusion" "https://huggingface.co/andite/anything-v4.0/resolve/main/anything-v4.5-pruned.safetensors"
+</code></pre>
+</div>
+<ul>
+<li><strong>!wget</strong>:是一個命令行工具，用來從網絡下載文件。</li>
+<li><strong>-P</strong>:指定下載目錄</li>
+<li><a href="https://huggingface.co/andite/anything-v4.0/resolve/main/anything-v4.5-pruned.safetensors">https://huggingface.co/andite/anything-v4.0/resolve/main/anything-v4.5-pruned.safetensors</a>
+<ul>
+<li>指名要下載的URL，這裡給的就是 Hugging Face models 的下載連結</li>
+</ul>
+</li>
+</ul>
+<p><strong>如何獲取Hugging Face Models 下載連結</strong></p>
+<p>一樣要去到Hugging Face後先登入，看到這個畫面後在上方搜尋你要的Models。我這邊是搜尋anything-v4.0，也可以試試看
+stable-diffusion-xl-base-1.0、stable-diffusion-v1-5。</p>
+<p>不過要注意的是並不是每個Models都支援 stable-diffusion Web UI 像是FLUX就不行。搜雲到之後點有 <strong>&ldquo;Model&rdquo;</strong> 這個選項的。</p>
+<p><img src="/img/blog/download-model1.webp" alt="download-model"></p>
+<p>點進去之後點選 <strong>&ldquo;Flies and versions&rdquo;</strong></p>
+<p><img src="/img/blog/download-model2.webp" alt="download-model"></p>
+<p>之後往下滑，一直到找到 <strong>.safetensors</strong> 這個結尾的-&gt;點進去。</p>
+<p><img src="/img/blog/download-model5.webp" alt="download-model"></p>
+<p>點進去會看到這個畫面，點選 <strong>&ldquo;Copy download link&rdquo;</strong>，然後將這個複製到的連結貼在你的指令後面。</p>
+<p><img src="/img/blog/download-model4.webp" alt="download-model"></p>
+<p>幾乎所有有在Hugging Face Models，都可以這樣使用，Hugging Face上的模型超級多，Text-to-img、img-to-text、Text-to-Video、Question Answering
+，幾乎你想得到的AI的Models Hugging Face都有，之後我也會專門寫一篇文章來介紹  Hugging Face。</p>
+<p><strong>啟動 Stable Diffusion WebUI</strong>
+<div class="code-block">
+    <button class="copy-btn">Copy</button>
+    <pre class="code-container"><code class="hljs bash">
+!python launch.py --share --xformers --enable-insecure-extension-access --theme light
+</code></pre>
+</div></p>
+<ul>
+<li>
+<p><strong>!python launch.py​​:</strong></p>
+<ul>
+<li>!：用於執行 shell 指令。</li>
+<li>python launch.py​​：這部分錶示使用 Python 解釋器執行名為 launch.py​​ 的腳本。 launch.py是 Stable Diffusion WebUI 的啟動腳本，負責載入模型、啟動 Web 伺服器等操作。</li>
+</ul>
+</li>
+<li>
+<p><strong>&ndash;share:</strong></p>
+<ul>
+<li>這個參數會使 Gradio 自動產生一個公共鏈接，你可以透過這個連結在瀏覽器中存取 Stable Diffusion WebUI。</li>
+</ul>
+</li>
+<li>
+<p><strong>&ndash;xformers:</strong></p>
+<ul>
+<li>這個參數啟用 xformers 函式庫，這是一個用來加速 Stable Diffusion 推理過程的函式庫。使用 xformers 可以顯著提高生成影像的速度和效率。</li>
+</ul>
+</li>
+<li>
+<p><strong>&ndash;enable-insecure-extension-access:</strong></p>
+<ul>
+<li>允許加載或使用系統內部標記為「不安全」的擴展或插件。因為 Colab 是一個共享的雲端環境，這個參數可以用來允許某些擴展功能的加載，特別是 Stable Diffusion Web UI 。</li>
+</ul>
+</li>
+<li>
+<p><strong>&ndash;theme light:</strong></p>
+<ul>
+<li>這個參數設定 WebUI 的主題為淺色主題。也可以使用 &ndash;theme dark 來設定深色主題。</li>
+</ul>
+</li>
+</ul>
+<p><strong>完整版程式</strong></p>
+<p>只有第一次要輸入這麼多指令，因為需要下載模型、創立資料夾、git clone stable-diffusion-webui。</p>
+<pre><code>from google.colab import drive
+drive.mount('/content/drive')
+!mkdir /content/drive/MyDrive/sd-webui-files
+!pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu116 -U
+!pip install -q xformers==0.0.16
+!pip install -q triton==2.0.0
+!git clone --depth=1 https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /content/drive/MyDrive/sd-webui-files/stable-diffusion-webui
+!wget --header=&quot;Authorization: Bearer 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&quot; -P &quot;/content/drive/MyDrive/sd-webui-files/stable-diffusion-webui/models/Stable-diffusion&quot; &quot;https://huggingface.co/andite/anything-v4.0/resolve/main/anything-v4.5-pruned.safetensors&quot;
+%cd /content/drive/MyDrive/sd-webui-files/stable-diffusion-webui/
+!git reset --hard
+!git pull
+!sed -i -e 's/checkout {commithash}/checkout --force {commithash}/g' launch.py
+!python launch.py --share --xformers --enable-insecure-extension-access --theme light
+</code></pre>
+<p>如果沒有意外的話，Stable Diffusion WebUI應該就跑起來了。會從Colab這裡看到“Runnging on public URL”，</p>
+<p><img src="/img/blog/sdpubliclink.webp" alt="Stable Diffusion WebUI"></p>
+<p>點進去就可以看到就可以看到Stable Diffusion WebUI 的畫面了，那我們就嘗試算一張圖吧！
+<img src="/img/blog/stable-diffusion-webui.webp" alt="Stable Diffusion WebUI"></p>
+<p>不得不說Google Colan提供的gpu nvidia tesla t4真的很強大，很快就跑完了。由於我這是跑的是anything-v4.5這個模型，這個模型會比較偏二次元。</p>
+<p>如果是第二次跑的話可以將筆記本裡面的程式簡化成：</p>
+<pre><code>from google.colab import drive
+drive.mount('/content/drive')
+
+!pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu116 -U
+!pip install -q xformers==0.0.16
+!pip install -q triton==2.0.0
+
+%cd /content/drive/MyDrive/sd-webui-files/stable-diffusion-webui/
+
+!python launch.py --share --xformers --enable-insecure-extension-access --theme light
+</code></pre>
+<p>後續會陸續更新提示詞技巧、參數說明、以及一些外掛的使用教學(ControlNet)。</p>
+<p>(未完待續)</p>
+<!-- ## 提示詞(prompt)技巧如何建立一個好的提示詞(prompt) -->
+<p>相關參考連結：</p>
+<ul>
+<li><a target="_blank" href="https://prompthero.com/">prompthero</a></li>
+<li><a target="_blank" href="https://stable-diffusion-art.com/prompt-guide/">stable-diffusion-art</a></li>
+<li><a target="_blank" href="https://ivonblog.com/posts/stable-diffusion-webui-general-prompt-guide/">Ivon的部落格</a></li>
+</ul>
+
+        </div>
+        
+        <aside id="meta">
+          
+        </aside>
+      </div>
+
+      <button id="goTopButton">
+        <img class="scrollTop mx-auto" src="/img/upload.png" width="20" height="20" alt="">
+      </button>
+      
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <div class="mb-3">
+          <div id="disqus_thread"></div>
+<script>
+    
+
+    
+
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://rdnotes-2.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hidden lg:block lg:col-span-1">
+    
+    
+    
+    <div class="mb-3">
+    <form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+        <label>
+            <input class="w-full p-3 focus:outline-none dark:bg-warmgray-900 dark:text-white placeholder-gray-700 dark:placeholder-gray-300" type="search"
+                placeholder="Search..." value="" name="q" aria-label="Search">
+        </label>
+        <input class="hidden" type="submit" value="Search">
+        <input type="hidden" name="sitesearch" value="https://www.andylin666.com/" />
+    </form>
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<div class="bg-white panel mb-3 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-3 pl-3 dark:text-gray-300 font-bold">Tags</p>
+    <div class="panel-block p-2">
+        <a href='/tags/git'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                git
+            </span></a>
+        <a href='/tags/highlight.js'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                highlight.js
+            </span></a>
+        <a href='/tags/hugo'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                hugo
+            </span></a>
+        <a href='/tags/linux'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                linux
+            </span></a>
+        <a href='/tags/nginx'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                nginx
+            </span></a>
+        <a href='/tags/ssl'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                ssl
+            </span></a>
+        <a href='/tags/stable-diffusion'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                stable-diffusion
+            </span></a>
+    </div>
+</div>
+
+    
+    
+    
+
+<div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-5 dark:text-gray-300 font-bold">Recent Posts</p>
+    <div class="mx-6">
+        <a href="/stable-diffusion/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white py-3">完整 Stable Diffusion 教學：從 Colab 到本地端，快速上手 Web UI 生成精美圖像</div>
+                    
+                </div>
+            </div>
+        </a>
+        <a href="/highlightjs/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white py-3">Highlight.js教學主題自定義：為你的程式碼區塊選擇和創建自定義配色方案</div>
+                    
+                </div>
+            </div>
+        </a>
+        <a href="/quickly-bind-domain-github-pages/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white py-3">[GitHub]如何快速將自訂域名綁定到GitHubPages(適用於多數域名註冊商)</div>
+                    
+                </div>
+            </div>
+        </a>
+        <a href="/hugo-basic-get-started/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white py-3">[hugo]簡單易懂的 Hugo 入門教學：從安裝到基本使用 - 輕鬆打造個人網站</div>
+                    
+                </div>
+            </div>
+        </a>
+        <a href="/linode-ubuntu-linux-install-nginx/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white py-3">[linux]如何在Linode VPS上架設Ubuntu與安裝Nginx server (含帳號申請購買教學)</div>
+                    
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+    
+    
+    
+    
+    <div class="tableofcontent" style="position: sticky; top: 20px;">
+        <div id="TableofContentScroll" class="bg-white tableofcontent-container-side dark:bg-warmgray-900 dark:text-white" >
+            <div class="mx-6">
+                <p id="TableofContentTitle" class="toc-title">目錄</p>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#本地端部署stable-diffusion-webui">本地端部署Stable Diffusion WebUI</a></li>
+    <li><a href="#colab-部署stable-diffusion-webui">Colab 部署Stable Diffusion WebUI</a>
+      <ul>
+        <li><a href="#step1設定-google-colab-環境">Step1：設定 Google Colab 環境</a></li>
+        <li><a href="#step2安裝必要的程式庫和依賴項">Step2：安裝必要的程式庫和依賴項</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </div>
+    
+  
+</div>
+    
+
+  </div>
+</div>
+
+            </div>
+        </div><footer class="bg-gray-800 text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2024 <a href="https://www.andylin666.com/" class="duration-200 hover:opacity-50">Andys Notes</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+    
+    <script src="/js/index.js"></script>
+    
+</body>
+
+</html>

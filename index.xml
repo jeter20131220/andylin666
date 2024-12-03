@@ -6,7 +6,26 @@
     <description>Recent content on Andys Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 13 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.andylin666.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.andylin666.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>完整 Stable Diffusion 教學：從 Colab 到本地端，快速上手 Web UI 生成精美圖像</title>
+      <link>https://www.andylin666.com/stable-diffusion/</link>
+      <pubDate>Tue, 03 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.andylin666.com/stable-diffusion/</guid>
+      <description>本地端部署Stable Diffusion WebUI 我的電腦規格：
+ 系統：macOSMonterey GPU：Apple M1  VRAM：共享系統（最大16GB）   RAM：16GB (CPU和GPU共享)  要先裝python3.10，如果沒有安裝的要去裝python3.10。
+Copy brew install cmake protobuf rust python@3.10 git wget   git clone Stable Diffusion WebUI Copy git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui  
+安裝stable-diffusion-webui
+cd stable-diffusion-webui  找到你剛剛gitclone 下來的目錄，然後輸入./webui.sh，第一次跑要跑比較久。如果有遇到錯誤的話再把錯誤貼上google，去慢慢解。
+下載Model
+如果在安裝AUTOMATIC1111，發現你電腦沒有任何繪圖模型，系統會自動安裝1-5-pruned-emaonly.safetensors，這邊如果要更換其他模型，可以去 Hugging Face下載。
+ Hugging Face  載完之後把.ckpt或是.safetensors放到stable-diffusion-webui/models/Stable-diffusion，就可以使用了。
+這邊補充一下Stable-diffusion有幾個比較重要的資料夾
+ extensions： 用來擴展 Web UI 功能的插件。 models/stable-diffusion： 存放 Stable Diffusion 基本模型文件。 outputs： 存放生成的圖像和其他輸出資料。  安裝完成後，也將models放到指定目錄之後，就可以開始算圖了，這邊先是算一張圖。
+由於我的電腦規格實在是太差了，我算了好幾張失敗品，好幾次都跑到我的mac m1 直接關機，因為mac m1 gpu跟cpu是共用記憶體，所以VRAM非常不夠，我剛跑幾張就顯示記憶體已滿，而且幾乎高解析度都要跑10分鐘以上。這邊放上失敗品，這還是跑了10多分鐘的結果- -</description>
+    </item>
+    
     <item>
       <title>Highlight.js教學主題自定義：為你的程式碼區塊選擇和創建自定義配色方案</title>
       <link>https://www.andylin666.com/highlightjs/</link>

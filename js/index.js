@@ -4,19 +4,19 @@ var tfcttitle = document.getElementById("TableofContentTitle");
 var clientHeight = document.getElementById('TableofContentScroll').clientHeight;
 // console.log(clientHeight);
 
-if (clientHeight>650){
-obj.style.cssText="overflow-y:scroll;height: 600px;"
-tfcttitle.innerText='目錄(可滾動)'
+if (clientHeight > 650) {
+  obj.style.cssText = "overflow-y:scroll;height: 600px;"
+  tfcttitle.innerText = '目錄(可滾動)'
 }
 
 // Get the button:
 let mybutton = document.getElementById("goTopButton");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
-    // console.log(document.documentElement.scrollTop)
+  // console.log(document.documentElement.scrollTop)
   if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
     mybutton.style.display = "block";
   } else {
@@ -24,14 +24,14 @@ function scrollFunction() {
   }
 }
 
-mybutton.addEventListener('click', function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+mybutton.addEventListener('click', function () {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
   });
+});
 
-  
+
 // obj.style.backgroundColor = "lightgray";
 
 // window.addEventListener('DOMContentLoaded', () => {
@@ -51,12 +51,12 @@ mybutton.addEventListener('click', function() {
 // 		});
 // 	});
 
-  
+
 // 	// Track all sections that have an `id` applied
 // 	document.querySelectorAll('h2[id],h3[id]').forEach((section) => {
 // 		observer.observe(section);
 // 	});
-	
+
 // });
 
 
@@ -71,27 +71,49 @@ mybutton.addEventListener('click', function() {
 // const topPos = anchors.offsetTop
 const anchors = document.querySelectorAll('h2[id],h3[id]');
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
   var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
   // console.log(scrollTop)
 
-  for (var i = 0; i < anchors.length; i++){
-    var id=anchors[i].getAttribute('id');
+  for (var i = 0; i < anchors.length; i++) {
+    var id = anchors[i].getAttribute('id');
     // console.log(id);
     document.querySelector(`#TableofContentScroll nav li a[href="#${id}"]`).parentElement.classList.remove('active');
 
   }
-  
-  for (var i = anchors.length-1; i >= 0; i--){
 
-    var id=anchors[i].getAttribute('id');
-    h2offsettop=anchors[i].offsetTop
+  for (var i = anchors.length - 1; i >= 0; i--) {
+
+    var id = anchors[i].getAttribute('id');
+    h2offsettop = anchors[i].offsetTop
 
     if (scrollTop > h2offsettop - 75) {
       // console.log(2)
       document.querySelector(`#TableofContentScroll nav li a[href="#${id}"]`).parentElement.classList.add('active');
-        break;
+      break;
     }
-}
+  }
 
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const copyButtons = document.querySelectorAll('.copy-btn');
+
+  copyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // 找到按鈕對應的代碼塊
+      const codeBlock = button.nextElementSibling.querySelector('code');
+      if (codeBlock) {
+        const text = codeBlock.innerText;
+
+        // 使用 Clipboard API 複製文字
+        navigator.clipboard.writeText(text).then(() => {
+          button.textContent = 'Copied!'; // 按鈕文字變更為 "Copied!"
+          setTimeout(() => (button.textContent = 'Copy'), 2000); // 2 秒後恢復
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+        });
+      }
+    });
+  });
 });
