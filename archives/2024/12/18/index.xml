@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2024/12/18 on Andys Notes</title>
+    <link>https://www.andylin666.com/archives/2024/12/18/</link>
+    <description>Recent content in 2024/12/18 on Andys Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language><atom:link href="https://www.andylin666.com/archives/2024/12/18/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>探索 Stable Diffusion WebUI 模型分類：推薦的各領域 Checkpoint與LoRA</title>
+      <link>https://www.andylin666.com/stable-diffusion-model/</link>
+      <pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.andylin666.com/stable-diffusion-model/</guid>
+      <description>如果還沒有安裝AUTOMATIC1111 stable-diffusion-webui的話可以參考:
+ 完整 Stable Diffusion 教學：從 Colab 到本地端，快速上手 Web UI 生成精美圖像  Stable diffusion 簡單來說就是一個文字生成圖像的模型，diffusion 為擴散模型，而我們再算圖會比較常使用到，LoRA、Checkpoint、Base Model。
+ LoRA： 一種輕量化的模型微調技術，用於添加特定風格或主題調整。 Checkpoint： Stable Diffusion 的核心模型檔案，決定生成影像的風格與效果。 Base Model： 未經微調的原始模型，適合作為創作的通用基礎。  Base models Stable Diffusion 模型的「核心」，能夠理解文本輸入（如 Prompt）並生成圖像。 是一個經過大規模數據集訓練的原始模型，具有最基礎的圖像生成能力。但是針對單一的主題、應用場景效果可能不會到非常理想。
+檔案大小:4-10+GB不等
+ Stable diffusion v1.5 Stable Diffusion XL Flux.1 dev  CheckPoint Checkpoint 是指模型訓練過程中的保存點。是基於Base Model 微調後完整模型文件，微調通常針對特定風格、特定主題或應用場景，進行額外訓練。所以在特定的主題跟場景效果會比一般的Base models好非常多。
+檔案大小:2-7+GB
+CheckPoint使用方法 要說到哪裡可以下載到最多種類的Checkpoint，非civitai莫屬了。
+ civitai  點進去civitai後點選右上角的，&amp;ldquo;Fliters&amp;rdquo;，然後在 &amp;ldquo;Model type&amp;rdquo; 這裡勾選，&amp;ldquo;Checkpoint&amp;rdquo;，就可以在 civitai上搜尋所有的CheckPoint。
+這裡也可以根據不同的主題與應用場景去搜尋，例如：Background(場景) Bulding(建築)、Colthing(服裝)、Style(風格)等等。
+點進去之後這邊可以看到，這個CheckPoint的資訊，類型、Base Model等的等，下載的按鈕也在這裡。
+往下滑之後可以看到使用說明，所有的checkpoint使用方法都不太一樣，所以下載之前一定要看清楚，作者通常會在這裡說明用什麼參數、權重、以及需要可以什麼LoRA使用。
+按下載之後先cd 到 stable-diffusion-webui 然後將下載好的檔案(.</description>
+    </item>
+    
+  </channel>
+</rss>

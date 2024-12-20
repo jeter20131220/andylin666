@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+
+<html lang="zh-tw">
+<head>
+    
+    
+    <title>Andys Notes | 探索 Stable Diffusion WebUI 模型分類：推薦的各領域 Checkpoint與LoRA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" sizes="64x64" href='/favicon/favicon.png' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Andys Notes | 探索 Stable Diffusion WebUI 模型分類：推薦的各領域 Checkpoint與LoRA" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.85bc548bd9a6d06929e44b92bd8aa204988eb9c13691500364ef051c77ce61b6.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="大幅提升 Stable Diffusion 創作效果！深入了解 Checkpoint 與 LoRA 的使用方法，探索各領域最佳推薦模型，全面升級影像品質！">
+<meta property="og:site_name" content="Andys Notes">
+<meta property="og:description" content="大幅提升 Stable Diffusion 創作效果！深入了解 Checkpoint 與 LoRA 的使用方法，探索各領域最佳推薦模型，全面升級影像品質！">
+<meta property="og:url" content="https://www.andylin666.com/stable-diffusion-model/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="https://www.andylin666.com/stable-diffusion-model/">
+
+<meta name="twitter:description" content="大幅提升 Stable Diffusion 創作效果！深入了解 Checkpoint 與 LoRA 的使用方法，探索各領域最佳推薦模型，全面升級影像品質！">
+<meta property="article:published_time" content="2024-12-18T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2024-12-18T00:00:00&#43;00:00">
+
+
+
+
+
+    
+<meta property="og:image" content="https://www.andylin666.com/img/stable-diffusion-checkpoint.webp">
+<meta property="og:image:url" content="https://www.andylin666.com/img/stable-diffusion-checkpoint.webp">
+    
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/vs2015.min.css" rel="stylesheet">
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <script>hljs.highlightAll();</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7GL3FWMNX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Z7GL3FWMNX');
+    </script>
+    <i class="dark hidden"></i>
+    <a href="" target="_blank"></a>
+</head><body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="bg-gray-800">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+            <div class="flex items-center flex-no-shrink bg-gray-800 text-white mr-6">
+                <a href="https://www.andylin666.com/"><span class="font-semibold text-2xl tracking-tight">Andys Notes</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    
+                </div>
+                <button id="hamburgerbtn" style="display: none;"
+                    class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                    <a href="/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        Home
+                    </a>
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    
+                    
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script><div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+  
+  <div class="col-span-3 lg:col-span-2 dark:text-white">
+    
+      <div class="bg-white dark:bg-warmgray-900 p-5 mb-4">
+        <h1 class="mb-2 text-4xl font-bold">探索 Stable Diffusion WebUI 模型分類：推薦的各領域 Checkpoint與LoRA</h1>
+        <aside id="meta">
+          <div>
+            <section>
+              
+            </section>
+            
+            <div id="tags">
+              <span class="icon-local_offer mr-1"></span>
+              
+              <a href='https://www.andylin666.com/tags/stable-diffusion'>stable-diffusion</a> |
+              
+            </div>
+            
+          </div>
+        </aside>
+        
+        <img class="py-4" src="https://www.andylin666.com/img/stable-diffusion-checkpoint.webp">
+        
+        
+        <aside>
+        </aside>
+        <div class="prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert mt-5">
+          <p></p>
+          <div class="tableofcontent">
+            <div class="tableofcontent-container">
+              <p class="toc-title">目錄</p>
+              <nav id="TableOfContents">
+  <ul>
+    <li><a href="#stable-diffusion">Stable diffusion</a></li>
+    <li><a href="#base-models">Base models</a></li>
+    <li><a href="#checkpoint">CheckPoint</a>
+      <ul>
+        <li><a href="#checkpoint使用方法">CheckPoint使用方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#embeddingtextual-inversion">Embedding(Textual inversion)</a></li>
+    <li><a href="#lora">LoRA</a>
+      <ul>
+        <li><a href="#lora-使用方法">LoRA 使用方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#stable-diffusion-model-推薦">Stable Diffusion Model 推薦</a>
+      <ul>
+        <li><a href="#chilloutmix-亞洲臉孔美女">ChilloutMix (亞洲臉孔美女)</a></li>
+        <li><a href="#realistic-vision-真人風格">Realistic Vision (真人風格)</a></li>
+        <li><a href="#anythingelse-v4-二次元">AnythingElse V4 (二次元)</a></li>
+      </ul>
+    </li>
+    <li><a href="#fantasy-world">Fantasy World</a></li>
+    <li><a href="#結論">結論</a></li>
+  </ul>
+</nav>
+            </div>
+          </div>
+
+          <p>如果還沒有安裝AUTOMATIC1111 stable-diffusion-webui的話可以參考:</p>
+<ul>
+<li><a target= _blank href="/stable-diffusion">完整 Stable Diffusion 教學：從 Colab 到本地端，快速上手 Web UI 生成精美圖像</a></li>
+</ul>
+<h2 id="stable-diffusion">Stable diffusion</h2>
+<p>簡單來說就是一個文字生成圖像的模型，diffusion 為擴散模型，而我們再算圖會比較常使用到，LoRA、Checkpoint、Base Model。</p>
+<!-- * CLIP 模型
+* Diffusion 模型
+* VAE模型
+
+利用CLIP模型，將文字轉向量作為輸，什麼是CLIP 模型 -->
+<ul>
+<li>LoRA： 一種輕量化的模型微調技術，用於添加特定風格或主題調整。</li>
+<li>Checkpoint： Stable Diffusion 的核心模型檔案，決定生成影像的風格與效果。</li>
+<li>Base Model： 未經微調的原始模型，適合作為創作的通用基礎。</li>
+</ul>
+<h2 id="base-models">Base models</h2>
+<p>Stable Diffusion 模型的「核心」，能夠理解文本輸入（如 Prompt）並生成圖像。 是一個經過大規模數據集訓練的原始模型，具有最基礎的圖像生成能力。但是針對單一的主題、應用場景效果可能不會到非常理想。</p>
+<p>檔案大小:4-10+GB不等</p>
+<ul>
+<li>Stable diffusion v1.5</li>
+<li>Stable Diffusion XL</li>
+<li>Flux.1 dev</li>
+</ul>
+<!-- Flux.1 dev 需要用到 comfyui ，目前 AUTOMATIC1111 stable-diffusion-webui 還尚未支援 Flux.1 dev 。目前 -->
+<h2 id="checkpoint">CheckPoint</h2>
+<p>Checkpoint 是指模型訓練過程中的保存點。是基於Base Model 微調後完整模型文件，微調通常針對特定風格、特定主題或應用場景，進行額外訓練。所以在特定的主題跟場景效果會比一般的Base models好非常多。</p>
+<p>檔案大小:2-7+GB</p>
+<h3 id="checkpoint使用方法">CheckPoint使用方法</h3>
+<p>要說到哪裡可以下載到最多種類的Checkpoint，非civitai莫屬了。</p>
+<ul>
+<li><a target= _blank href="https://civitai.com/models">civitai</a></li>
+</ul>
+<p>點進去civitai後點選右上角的，<strong>&ldquo;Fliters&rdquo;</strong>，然後在 <strong>&ldquo;Model type&rdquo;</strong> 這裡勾選，<strong>&ldquo;Checkpoint&rdquo;</strong>，就可以在 civitai上搜尋所有的CheckPoint。</p>
+<p><img src="/img/blog/civitai-checkpoint.webp" alt="civitai-checkpoint"></p>
+<p>這裡也可以根據不同的主題與應用場景去搜尋，例如：Background(場景)
+Bulding(建築)、Colthing(服裝)、Style(風格)等等。</p>
+<p><img src="/img/blog/civitai-tag2.webp" alt="civitai-checkpoint"></p>
+<p>點進去之後這邊可以看到，這個CheckPoint的資訊，類型、Base Model等的等，下載的按鈕也在這裡。</p>
+<p><img src="/img/blog/civitai-detail.webp" alt="civitai-checkpoint"></p>
+<p>往下滑之後可以看到使用說明，所有的checkpoint使用方法都不太一樣，所以下載之前一定要看清楚，作者通常會在這裡說明用什麼參數、權重、以及需要可以什麼LoRA使用。</p>
+<p><img src="/img/blog/civitai-readme.webp" alt="civitai-checkpoint"></p>
+<p>按下載之後先cd 到 stable-diffusion-webui 然後將下載好的檔案(.safetensors、.ckpt)丟到<br> <code>stable-diffusion-webui/models/stable-diffusion</code> 。在stable-diffusion-webui模型旁邊，按下重新整理，再點選那個CheckPoint就可以使用了。</p>
+<p><img src="/img/blog/sdwebui-checkpoint.png" alt="sdwebui-checkpoint"></p>
+<h2 id="embeddingtextual-inversion">Embedding(Textual inversion)</h2>
+<p>Embedding 是一種詞嵌入技術，主要針對 文本提示詞（Prompts） 進行調整或優化。簡單來說就是將非常多常用的提示詞變成文字合集。</p>
+<p>檔案大小：KB-MB。</p>
+<p>比較常用的就是easynegative、bad-hands-5，這兩個都是作為負面提示詞(negative prompt)使用，easynegative是由許多算壞圖片負面提示詞合集，bad-hands-5是針對手指變形的負面提示詞。</p>
+<ul>
+<li><a target="_blank" href="https://civitai.com/models/7808/easynegative">easynegative</a></li>
+<li><a target="_blank" href="https://civitai.com/models/116230/bad-hands-5">bad-hands-5</a></li>
+</ul>
+<p>下載下來之後(.pt)，要放在<strong>stable-diffusion-webui\embeddings</strong>，然後打開stable-diffusion-webui，點選 <strong>&ldquo;Textual inversion&rdquo;</strong>，再點選旁邊的 <strong>&ldquo;refresh箭頭&rdquo;</strong>，就可以看到自己剛剛丟進去的embedding了。然後再輸入Negative prompt得時候點一下embedding，就會帶入到Negative prompt裡面了。</p>
+<p><img src="/img/blog/embeding.png" alt="embeding"></p>
+<h2 id="lora">LoRA</h2>
+<p>LoRA 是一種輕量化的模型微調方法。它不會改變 Base Model 本身的權重，而是透過額外的權重變換來調整模型行為，因此檔案會比較小大概落在幾百MB。不過這邊要注意的是，LoRA無法單獨使用，需要搭配CheckPoint。</p>
+<p>檔案大小:幾百MB</p>
+<!-- 微模型
+* 可利用權重值來調整畫作的風格
+* 無法單獨使用 需要搭配 CheckPoint 
+* 檔案小 運算資源消耗少
+* 可以用少量圖片訓練自己的模型 -->
+<h3 id="lora-使用方法">LoRA 使用方法</h3>
+<p>這邊一樣要前往</p>
+<ul>
+<li><a target= _blank href="https://civitai.com/models">civitai</a></li>
+</ul>
+<p>點進去civitai後點選右上角的，<strong>&ldquo;Fliters&rdquo;</strong>，然後在 <strong>&ldquo;Model type&rdquo;</strong> 這裡勾選，<strong>&ldquo;LoRA&rdquo;</strong>，就可以在 civitai上搜尋所有的LoRA。</p>
+<p><img src="/img/blog/civitai-lora.webp" alt="LoRA"></p>
+<p>挑選一個自己喜歡的點進去。由於每個LoRA都有可能有要搭配使用的CheckPoint，還有權重值要給多少，所以在下載之前要看清楚底下的使用説明。</p>
+<p>將下載好的檔案，放在 <strong>stable-diffusion-webui/models/LoRA</strong>路經當中後，打開stable-diffusion-webui。先點選 <strong>&quot;:Lora&quot;</strong>，再點選旁邊的 <strong>&ldquo;refresh箭頭&rdquo;</strong>，就可以看到自己剛剛丟進去的Lora了。
+<img src="/img/blog/lorause.png" alt="LoRA"></p>
+<p>使用方法也非常簡單，在我們要輸入prompt生成圖像時prompt欄位，加入 <a href="lora:name:weight">lora:name:weight</a></p>
+<ul>
+<li>name指得就是模型名稱</li>
+<li>weight指得就是權重值 0-1</li>
+</ul>
+<p>Example:
+<code>&lt;lora:chilloutmixss_xss10:0.7&gt;</code></p>
+<p>意思就是使用chilloutmixss_xss10這個LoRA，權重直0.7的意思</p>
+<p>也可以直接在prompt的時候直接點Lora，stable-diffusion-webui會自己把Lora的名稱帶進去prompt裏面，跟Embedding的使用方法一樣。</p>
+<h2 id="stable-diffusion-model-推薦">Stable Diffusion Model 推薦</h2>
+<p>其實直接用base models去算圖結果可能並不會到非常理想，因為base models本身的涵蓋範圍很廣，他可以產出風景、建築、藝術、插畫等等，因此他在單一領域的表現可能不會比建立在他基礎底下建立的models還要好。</p>
+<p>有些模型就是專注於產出美女、人像、甚至是可以產出韓國偶像的model，因此如果有明確要產出的圖像目標，就可以去找那個領域的models來使用效果會更好。</p>
+<!-- 
+這邊舉個例子：我用差不多的提示詞在Stable diffusion v1.5 跑出來的結果與我用ChilloutMix這個models跑出來的品質就有差。 -->
+<!-- Stable diffusion v1.5，跑出來的圖較為僵硬，就會比較假一點，特定領域、應用場景上使用已經訓練好的CheckPoint去算圖也是不錯的選擇。 -->
+<p>雖然Stable diffusion v1.5的下一代 Stable Diffusion XL非常厲害，但是基於Stable diffusion v1.5 訓練出來的CheckPoint在特定領域下，也可以生成不下於Stable Diffusion XL的影像品質哦。這邊我會推薦幾個我有使用過的CheckPointt。</p>
+<h3 id="chilloutmix-亞洲臉孔美女">ChilloutMix (亞洲臉孔美女)</h3>
+<p><strong>模型類型</strong>：CheckPoint</p>
+<p><strong>下載地址</strong>：<a target="_blank" href="https://civitai.com/models/6424/chilloutmix">chilloutmix</a></p>
+<p>CheckPoint專門來生成高擬真人物的models，尤其是亞洲臉孔的美女，真的是蠻不錯的，prompt給的簡短的 beauty asian girl，都可以跑出非常不錯的人物。</p>
+<p><img src="/img/blog/chilloutMix-1.webp" alt="ChilloutMix"></p>
+<p>▲ 這裡的圖是直接使用，ChilloutMix去生成圖象，並沒有包含LoRA，只有使用easynegative、bad-hands-5這兩個embeddings而已。算出來的結果會非常乾淨細節也不錯。</p>
+<p><img src="/img/blog/chilloutMix-3.webp" alt="ChilloutMix"></p>
+<p>▲ 不過如果覺得覺得膩了，ChilloutMix也可以搭配LoRA使用，這裡的圖我是搭配Cute_girl_mix4這個LoRA使用。會感受到臉型不太一樣，會更加可愛一點。</p>
+<ul>
+<li><a target="_blank" href="https://civitai.com/models/14171/cutegirlmix4">cutegirlmix4</a></li>
+</ul>
+<p><img src="/img/blog/chilloutMix-2.webp" alt="ChilloutMix"></p>
+<p>▲  這裡我是使用了ChilloutMixss，這個LoRA，出來的妝感會比較重一點。但是這個LoRA的權重不要給太重，大概落在0.4～0.7就好，
+<code>&lt;lora:xiaoshazi:0.4&gt;</code>，如果給太重會影響到面容。</p>
+<ul>
+<li><a target="_blank" href="https://civitai.com/models/10850/chilloutmixss">chilloutmixss (LoRA)</a></li>
+</ul>
+<h3 id="realistic-vision-真人風格">Realistic Vision (真人風格)</h3>
+<p><strong>模型說明</strong>:Realistic Vision 是Stable Diffusion 1.5 訓練的模型，能夠產生高度擬真風格、高細節的圖片，非常擅長動物與人像。</p>
+<p><strong>模型類型</strong>：CheckPoint</p>
+<p><strong>下载地址：</strong>：<a target="_blank" href="https://civitai.com/models/4201?modelVersionId=501240">Realistic Vision</a></p>
+<p><img src="/img/blog/realistic-vision-1.webp" alt="Realistic Vision"></p>
+<p>▲ 算完真的有被嚇到&hellip;.這真的是AI嗎！？真的不是傳一張世界某個角落的人像照片給我？
+<img src="/img/blog/realistic-vision-2.webp" alt="Realistic Vision"></p>
+<p>Realistic Vision 可以搭配這個LoRA使用</p>
+<ul>
+<li><a target="_blank" href="https://civitai.com/models/58390/detail-tweaker-lora-lora">Detail Tweaker LoRA </a></li>
+</ul>
+<p>主要是增加圖片的細節以及降低對比，參數可能要多條幾次才會出來比較理想得圖片，我是給大約-1~1。</p>
+<p><code>&lt;lora:add detail:-1&gt;</code></p>
+<p>但是Realistic Vision 再生成純背景的時候，例如自然景觀的時候就比較不適合了。</p>
+<!-- 你以為Stable diffusion，生成式影像只能生成美女嗎，那你就太小看它了，這邊就推薦幾個不同領域的 models給各位參考。 -->
+<h3 id="anythingelse-v4-二次元">AnythingElse V4 (二次元)</h3>
+<p><strong>模型說明</strong>:是專門針對動漫風格的圖像生成進行訓練的模型，可以產出非常高細節、高質量的動漫風格圖像。</p>
+<p><strong>模型類型</strong>：CheckPoint<br></p>
+<p><strong>下載地址</strong>：<a target="_blank" href="https://civitai.com/models/4855/anythingelse-v4">AnythingElse V4 </a></p>
+<p><img src="/img/blog/anythingelsev4-1.webp" alt="anythingelsev4"></p>
+<p><img src="/img/blog/anythingelsev4-2.webp" alt="anythingelsev4"></p>
+<!-- * 二次元 Checkpoint https://blog.256pages.com/stable-diffusion-top3-anime-model/ -->
+<h4 id="吉卜力">吉卜力</h4>
+<p>宮崎駿迷一定要玩玩看這個LoRA，這邊我有搭配這個LoRA去使用，二次元風格有超級多的LoRA，尤其是知名的動漫。</p>
+<p><strong>模型類型</strong>：LoRA</p>
+<p><strong>下載地址</strong>： <a target="_blank" href="https://civitai.com/models/6526?modelVersionId=7657"> Studio Ghibli Style LoRA </a></p>
+<!-- Studio Ghibli Style -->
+<p><img src="/img/blog/anythingelsev4-3lora.webp" alt="anythingelsev4"></p>
+<p>不過這邊要注意的是，要給得非常具體，才有辦法出來最精準的形象哦。例如:</p>
+<p><strong>prompt:</strong></p>
+<p>ghibli style, san (mononoke hime), 1girl, armlet, bangs, black hair, black undershirt, breasts, cape, circlet, earrings, facepaint, floating hair, forest, fur cape, green eyes, jewelry, looking at viewer, medium breasts, nature, necklace, outdoors, parted bangs, shirt, short hair, sleeveless, sleeveless shirt, solo, tooth necklace, tree, upper body, white shirt , ((masterpiece))</p>
+<p>最好是把外觀描述得越詳細越好，然後前面還要提到動漫名稱以及角色名稱。san (mononoke hime)</p>
+<h2 id="fantasy-world">Fantasy World</h2>
+<p><strong>模型說明：</strong> 二次元遊戲場景。</p>
+<p><strong>模型類型</strong>：CheckPoint</p>
+<p><strong>下載地址</strong>： <a target="_blank" href="https://civitai.com/models/11031?modelVersionId=13069"> Fantasy World </a></p>
+<p><img src="/img/blog/fantasyworld-1-3.webp" alt="fantasyworld">
+<img src="/img/blog/fantasyworld-1.webp" alt="fantasyworld">
+<img src="/img/blog/fantasyworld-2.webp" alt="fantasyworld">
+<img src="/img/blog/fantasyworld-4.webp" alt="fantasyworld"></p>
+<p>(持續更新)</p>
+<!-- 下载地址： https:/civita.com/odels/6526/studio-ghibli-style-lora
+
+模型说明：吉卜力风格模型。 -->
+<!-- 吉卜力風格背景
+https://civitai.com/models/54233/ghiblibackground -->
+<!-- 
+### Concept Scenery Scene 
+
+模型类别：LoRA 模型
+
+下载地址： https://civitai.com/models/23682/conceptsceneryscenev2
+
+模型说明：风景场景模型。
+
+### Howls Moving Castle
+
+模型类别：LoRA 模型
+
+下载地址： https://civitai.com/models/14605?modelVersionId=19998
+
+模型说明：风景场景模型。
+
+
+### Miniture world style 微缩世界风格
+
+模型类别：LoRA - LYCORIS 模型
+
+下载地址： https:/civiai.com/models/28531/miniature-world-style
+
+模型说明：微缩世界风格模型。
+
+触发词：mini\(ttp\)、miniature、isometric、landscape
+
+
+### Style of HOPA Games
+
+模型类别：TEXTUAL INVERIO
+
+下载地址： https://civitai.com/models/18424/style-of-hopa-games-landscapes-and-scenery-concept-art-in-style-of-video-games-hoppagames
+
+模型说明：游戏场景风格。
+
+触发词：hoppagames
+
+
+向量圖 -->
+<!-- ### Makoto Shinkai
+
+新海誠風格
+模型类别：LoRA 模型
+
+下载地址：https://civitai.com/models/10626/makoto-shinkai-substyles-style-lora
+
+模型说明：新海诚画风模型。
+
+原神風格
+
+* [DDicon](https://civitai.com/models/38511/ddicon?modelVersionId=44447)
+* [ddicon lora](https://civitai.com/models/38558/ddiconlora) 
+
+* [ReV Animated]( https://civitai.com/models/7371?modelVersionId=46846)
+
+
+### XSarchitectral-InteriorDesign-ForXSLora
+
+模型类别：Checkpoint 模型
+
+下载地址：https://civitai.com/models/28112/xsarchitectural-interiordesign-forxslora
+
+模型说明：室内设计模型，建议配合 LoRA 使用： https://civitai.com/models/25383/xsarchitectural-7modern-interior。
+
+### architectural design sketches with markers
+
+模型类别：Checkpoint 模型
+
+下载地址： https://civitai.com/models/34384/architectural-design-sketches-with-markers
+
+模型说明：建筑设计草图模型 。触发词：marker painting、handsketch
+ -->
+<h2 id="結論">結論</h2>
+<p>以上就是幾個我玩過效果比較好的CheckPoint、和LoRA。這篇文章會持續更新，因為模型跟LoRA進步的速度很快，可能每幾週又有新的CheckPoint可以玩了。</p>
+<!-- 
+## prompt 數字代表的意思-權重解析
+
+
+
+
+## SD VAE(Variation autoencoder)
+有些模型本身自帶VAE -->
+<!-- 相關參考連結：
+* <a target="_blank" href="https://blog.256pages.com/stable-diffusion-basic-prompt-tutorial/">Stable Diffusion Prompt (基本篇)</a>
+*  -->
+<p>Stable Diffusion：</p>
+<ul>
+<li><a target= _blank href="/stable-diffusion">完整 Stable Diffusion 教學：從 Colab 到本地端，快速上手 Web UI 生成精美圖像</a></li>
+</ul>
+
+        </div>
+        
+        <aside id="meta">
+          
+        </aside>
+      </div>
+
+      <button id="goTopButton">
+        <img class="scrollTop mx-auto" src="/img/upload.png" width="20" height="20" alt="">
+      </button>
+      
+      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
+        <div class="mb-3">
+          <div id="disqus_thread"></div>
+<script>
+    
+
+    
+
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://rdnotes-2.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hidden lg:block lg:col-span-1">
+    
+    
+    
+    <div class="mb-3">
+    <form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+        <label>
+            <input class="w-full p-3 focus:outline-none dark:bg-warmgray-900 dark:text-white placeholder-gray-700 dark:placeholder-gray-300" type="search"
+                placeholder="Search..." value="" name="q" aria-label="Search">
+        </label>
+        <input class="hidden" type="submit" value="Search">
+        <input type="hidden" name="sitesearch" value="https://www.andylin666.com/" />
+    </form>
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<div class="bg-white panel mb-3 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-3 pl-3 dark:text-gray-300 font-bold">Tags</p>
+    <div class="panel-block p-2">
+        <a href='/tags/git'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                git
+            </span></a>
+        <a href='/tags/highlight.js'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                highlight.js
+            </span></a>
+        <a href='/tags/hugo'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                hugo
+            </span></a>
+        <a href='/tags/linux'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                linux
+            </span></a>
+        <a href='/tags/nginx'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                nginx
+            </span></a>
+        <a href='/tags/ssl'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                ssl
+            </span></a>
+        <a href='/tags/stable-diffusion'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 border-radius justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                stable-diffusion
+            </span></a>
+    </div>
+</div>
+
+    
+    
+    
+
+<div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-5 dark:text-gray-300 font-bold">Recent Posts</p>
+    <div class="mx-6">
+        <a href="/stable-diffusion-model/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white py-3">探索 Stable Diffusion WebUI 模型分類：推薦的各領域 Checkpoint與LoRA</div>
+                    
+                </div>
+            </div>
+        </a>
+        <a href="/stable-diffusion/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white py-3">完整 Stable Diffusion 教學：從 Colab 到本地端，快速上手 Web UI 生成精美圖像</div>
+                    
+                </div>
+            </div>
+        </a>
+        <a href="/highlightjs/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white py-3">Highlight.js教學主題自定義：為你的程式碼區塊選擇和創建自定義配色方案</div>
+                    
+                </div>
+            </div>
+        </a>
+        <a href="/quickly-bind-domain-github-pages/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white py-3">[GitHub]如何快速將自訂域名綁定到GitHubPages(適用於多數域名註冊商)</div>
+                    
+                </div>
+            </div>
+        </a>
+        <a href="/hugo-basic-get-started/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white py-3">[hugo]簡單易懂的 Hugo 入門教學：從安裝到基本使用 - 輕鬆打造個人網站</div>
+                    
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+    
+    
+    
+    
+    <div class="tableofcontent" style="position: sticky; top: 20px;">
+        <div id="TableofContentScroll" class="bg-white tableofcontent-container-side dark:bg-warmgray-900 dark:text-white" >
+            <div class="mx-6">
+                <p id="TableofContentTitle" class="toc-title">目錄</p>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#stable-diffusion">Stable diffusion</a></li>
+    <li><a href="#base-models">Base models</a></li>
+    <li><a href="#checkpoint">CheckPoint</a>
+      <ul>
+        <li><a href="#checkpoint使用方法">CheckPoint使用方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#embeddingtextual-inversion">Embedding(Textual inversion)</a></li>
+    <li><a href="#lora">LoRA</a>
+      <ul>
+        <li><a href="#lora-使用方法">LoRA 使用方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#stable-diffusion-model-推薦">Stable Diffusion Model 推薦</a>
+      <ul>
+        <li><a href="#chilloutmix-亞洲臉孔美女">ChilloutMix (亞洲臉孔美女)</a></li>
+        <li><a href="#realistic-vision-真人風格">Realistic Vision (真人風格)</a></li>
+        <li><a href="#anythingelse-v4-二次元">AnythingElse V4 (二次元)</a></li>
+      </ul>
+    </li>
+    <li><a href="#fantasy-world">Fantasy World</a></li>
+    <li><a href="#結論">結論</a></li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </div>
+    
+  
+</div>
+    
+
+  </div>
+</div>
+
+            </div>
+        </div><footer class="bg-gray-800 text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2024 <a href="https://www.andylin666.com/" class="duration-200 hover:opacity-50">Andys Notes</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+    
+    <script src="/js/index.js"></script>
+    
+</body>
+
+</html>
