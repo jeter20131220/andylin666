@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>openai on Andys Notes</title>
+    <link>https://www.andylin666.com/tags/openai/</link>
+    <description>Recent content in openai on Andys Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Mon, 23 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.andylin666.com/tags/openai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>全面解析 12 Days of OpenAI：有哪些新工具能改變你的工作方式？</title>
+      <link>https://www.andylin666.com/12days-of-openAI/</link>
+      <pubDate>Mon, 23 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.andylin666.com/12days-of-openAI/</guid>
+      <description>12 Days of OpenAI 是 OpenAI 推出的年度特別活動，旨在連續 12 天內公佈一系列重要更新與全新工具。這些工具與功能專為創作者、辦公室職員和科技愛好者設計，涵蓋內容創作、程式開發、日常生產力等多個領域。活動的目的是透過這些創新，進一步提升人們的工作效率與創作能力。
+整個活動以每天推出一項新功能或服務的方式進行，例如強化人工智慧模型、新的應用工具整合，以及支援個性化設置等。這些更新的共同特點是簡化流程、優化操作體驗，讓 AI 真正成為提升效率的得力助手。
+ ChatGPT Pro 和 o1 第一天登場的是 o1，OpenAI 最新且最強大的推理專家。需要解決數學問題？搞定。想簡化量子物理？輕而易舉。Debug 那段讓人頭痛的代碼？沒問題！把 o1 想像成那位既聰明又貼心的朋友，只不過它隨叫隨到。
+ 標語：&amp;ldquo;Brains, but make it accessible.&amp;rdquo;  o1具有多模態能力可以識別圖像跟照片，沒錯o1已經有視覺功能了，後續可能還會新增網頁瀏覽與上傳文件功能，目前o1也被稱為最聰明的模型。到底有多聰明我們直接看這張圖。
+▲ 由左至右分別為，數學競賽(AIME2024)、程式競賽(codeforces)、高級科學問題(PhD-level science questions)，都可以看到o1完勝。
+該如何使用o1模型呢??就要參考ChatGPT Pro新的訂閱計畫，費用為 $200USD/month，值得注意的是這次得訂閱計畫可以無限次使用 GPT-4o and o1。
+詳細的規格與價目表可以參考:
+ Pricing   Sora 正式亮相 Sora是一個文字生成影片的 AI 工具，允許用戶從文本提示創建高品質的影片。也就是真真正正的實現 text-to-video。
+曾經想過只用文字就能創造完整的影片嗎？Open ai 實現了！Sora 是一款將文字轉換為影片的神奇工具。只需輸入你的想法，Sora 就能將它轉化為電影級的作品。
+Sora 是一款革命性的影片生成工具，讓內容創作者能夠輕鬆將文本轉換為影片。無論是為社交平台創建短片，還是為培訓材料製作視覺內容，Sora 都可以極大地提高工作效率。
+openai還為了sora建立了社群，可以在tag當中找到sora可以看到別人的做品，自己也可以生成的作品。
+ sora community  該怎麼使用有哪些使用門檻呢?? 如果是免費用戶的話目前還尚未開放試用，目前只對Plus還有Pro開放，不過也不用著急，之後OpenAI，也有可能會對不同需求的用戶開啟訂閱專案。
+ sora 價格參考：sora pricing  Canvas ✏️⚙️ 強力的生產力工具 Canvas 是一個新介面，可與 ChatGPT 一起編寫需要編輯和修訂的項目。</description>
+    </item>
+    
+  </channel>
+</rss>

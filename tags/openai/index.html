@@ -4,7 +4,7 @@
 <head>
     
     
-    <title>Andys Notes | [Nginx設定]Virtual Host Nginx http server與多個網域共用一台主機設定</title>
+    <title>Andys Notes | openai</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
@@ -14,7 +14,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" sizes="64x64" href='/favicon/favicon.png' />
     <meta name="theme-color" content="#ffffff">
-    <meta property="og:title" content="Andys Notes | [Nginx設定]Virtual Host Nginx http server與多個網域共用一台主機設定" />
+    <meta property="og:title" content="Andys Notes | openai" />
     
     
     
@@ -25,30 +25,29 @@
     
 
 
+	
 
-<meta name="description" content="兩個網域要指向同一個IP位置nginx設定，例如www.example1.com、www.example.com分別要指向website1、website2，而這兩個網頁的檔案內分別都放置各自的index.html。">
+<meta name="description" content="Andy&#39;s Notes - 分享技術、生成式 AI、生活與成長經驗的個人博客。">
 <meta property="og:site_name" content="Andys Notes">
-<meta property="og:description" content="兩個網域要指向同一個IP位置nginx設定，例如www.example1.com、www.example.com分別要指向website1、website2，而這兩個網頁的檔案內分別都放置各自的index.html。">
-<meta property="og:url" content="https://www.andylin666.com/post/nginx-multiple-domains-on-one-server/">
+<meta property="og:description" content="Andy&#39;s Notes - 分享技術、生成式 AI、生活與成長經驗的個人博客。">
+<meta property="og:url" content="https://www.andylin666.com/tags/openai/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="">
 
-<link rel="canonical" href="https://www.andylin666.com/post/nginx-multiple-domains-on-one-server/">
+<link rel="canonical" href="https://www.andylin666.com/tags/openai/">
 
-<meta name="twitter:description" content="兩個網域要指向同一個IP位置nginx設定，例如www.example1.com、www.example.com分別要指向website1、website2，而這兩個網頁的檔案內分別都放置各自的index.html。">
-<meta property="article:published_time" content="2023-03-18T00:00:00&#43;00:00">
-<meta property="article:updated_time" content="2023-03-18T00:00:00&#43;00:00">
-
-
+<meta name="twitter:description" content="Andy&#39;s Notes - 分享技術、生成式 AI、生活與成長經驗的個人博客。">
+<meta property="article:published_time" content="2024-12-23T00:00:00&#43;00:00">
+<meta property="article:updated_time" content="2024-12-23T00:00:00&#43;00:00">
 
 
 
-    
-<meta property="og:image" content="https://www.andylin666.com/img/nginx-1.webp">
-<meta property="og:image:url" content="https://www.andylin666.com/img/nginx-1.webp">
-    
+
+
+<meta property="og:image" content="https://www.andylin666.com/">
+<meta property="og:image:url" content="https://www.andylin666.com/">
 
     
     <link rel="stylesheet" href='/css/custom.css'>
@@ -126,163 +125,36 @@
             <div class="lg:mx-5">
 <div class="grid grid-cols-3 gap-4">
   
-  <div class="col-span-3 lg:col-span-2 dark:text-white">
+  <div class="col-span-3 lg:col-span-2 mb-3">
     
-      <div class="bg-white dark:bg-warmgray-900 p-5 mb-4">
-        <h1 class="mb-2 text-4xl font-bold">[Nginx設定]Virtual Host Nginx http server與多個網域共用一台主機設定</h1>
-        <aside id="meta">
-          <div>
-            <section>
-              
-            </section>
-            
-            <div id="tags">
-              <span class="icon-local_offer mr-1"></span>
-              
-              <a href='https://www.andylin666.com/tags/nginx'>nginx</a> |
-              
-            </div>
-            
-          </div>
-        </aside>
-        
-        <img class="py-4" src="https://www.andylin666.com/img/nginx-1.webp">
-        
-        
-        <aside>
-        </aside>
-        <div class="prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert mt-5">
-          <p></p>
-          <div class="tableofcontent">
-            <div class="tableofcontent-container">
-              <p class="toc-title">目錄</p>
-              <nav id="TableOfContents">
-  <ul>
-    <li><a href="#nginx設定">Nginx設定</a>
-      <ul>
-        <li><a href="#nginxconf">nginx.conf</a></li>
-      </ul>
-    </li>
-    <li><a href="#dns設定">DNS設定</a></li>
-  </ul>
-</nav>
-            </div>
-          </div>
-
-          <p>使用情境：兩個網域要指向同一個 IP 的設定。</p>
-<p>假設有兩個網域www.example1.com、www.example.com分別要指向website1、website2，而這兩個網頁的檔案內分別都放置各自的index.html。而假設主機的IP是192.162.123.123。</p>
-<ul>
-<li><a href="http://www.example1.com">www.example1.com</a> 要指向192.162.123.123</li>
-<li><a href="http://www.example2.com">www.example2.com</a>也要指向192.162.123.123</li>
-</ul>
-<p>nginx多個網域共用一台主機，需要做兩個設定：</p>
-<ul>
-<li>Nginx設定</li>
-<li>DNS設定</li>
-</ul>
-<h2 id="nginx設定">Nginx設定</h2>
-<pre><code>$ ssh 帳號@主機
-</code></pre>
-<p>example ssh to 192.162.123.123:</p>
-<pre><code>$ ssh root＠192.162.123.123
-</code></pre>
-<!-- <img class="py-4 img-fluid" src="/static/img/blog/ssh-1.webp"> -->
-<p>輸入ssh指令按下enter後可以看到輸入密碼的欄位
-<img src="/img/blog/ssh-1.webp" alt="ssh-to-server">
-密碼輸入成功後，如果出現以下畫面就表示ssh成功了
-<img src="/img//blog/ssh-2.webp" alt="ssh-to-server"></p>
-<p>延續上圖看到的畫面之後，現在我們要找到nginx所在的路徑，一般都會在<code>/etc/nginx</code>。因此我們直接cd /etc/nginx資料夾。</p>
-<pre><code>$ root@localhost:~# cd /etc/nginx
-</code></pre>
-<p>當我們進入到<code>/etc/nginx</code>之後，輸入ls之後會看到很多檔案。</p>
-<pre><code> $ root@localhost:/etc/nginx/# ls
-</code></pre>
-<p><img src="/img//blog/nginx-file.webp" alt="nginx-file"></p>
-<p>而我們今天會用到 <code>conf.d</code>資料夾、<code>nginx.conf</code>檔案， 畫面停留在上圖之後</p>
-<pre><code>$ cd conf.d/ 
-</code></pre>
-<p>Step1:在這個路徑下新增檔案</p>
-<pre><code>$ sudo touch website1.conf
-</code></pre>
-<p>Step2:編輯新增的檔案website1.conf</p>
-<pre><code> $ sudo vi website1.conf
-</code></pre>
-<p>Step3:進入編輯模式後，要按 i 才可以編輯，然後貼上這段。</p>
-<pre><code>server{
- listen  80;
- server_name www.example1.com ;
- root  /var/www/website1;
- location / {
-     index  index.html index.hml;
- }
-}
-</code></pre>
-<p>修改好要儲存要先按 esc，然後輸入 :wq 後按 enter 跳出。</p>
-<p>重複上述步驟step1-step3，新增website2.conf，並且貼上step3的設定改為：</p>
-<pre><code>server{
- listen  80;
- server_name www.example2.com ;
- root  /var/www/website2;
- location / {
-     index  index.html index.hml;
- }
-}
-</code></pre>
-<p>/var/www/website2 指的就是網頁放在主機上的路徑，這段設定就是當你輸入網址www.example2.com，他會找到/var/www/website2裡面的index.html檔案。</p>
-<p><code>listen 80</code>是將Web server開在port 80的意思，而主機對外預設就是port 80。</p>
-<h3 id="nginxconf">nginx.conf</h3>
-<p>nginx.conf的部分就是要新增引入所有的.conf檔案的指令。</p>
-<p>nginx.conf檔案位置一般都會放在/etc/nginx/nginx.conf</p>
-<pre><code>$ cd /etc/nginx/
-$ sudo vi nginx.conf
-</code></pre>
-<p>再nignx.conf檔案裡面找到有宣告include的地方，加入這行指令。</p>
-<pre><code>include /etc/nginx/conf.d/*.conf; 
-</code></pre>
-<p>修改好要儲存要先按 esc，然後輸入 :wq 後按 enter 跳出。</p>
-<p>重啟nginx:</p>
-<pre><code>$ sudo systemctl restart nginx
-</code></pre>
-<p>nginx設定完成！</p>
-<h2 id="dns設定">DNS設定</h2>
-<p>我們要將購買好的網域指向我們的主機IP，因此來到購買網域的DNS設定，點選你要指向主機的網域。</p>
-<p><img src="/img//blog/dns-1.webp" alt="dns-setting"></p>
-<p>按下DNS後會看到類似於以下畫面的地方，按下編輯</p>
-<p><img src="/img//blog/dns-2.webp" alt="dns-setting"></p>
-<p>將主機IP輸入後按下儲存，DNS設定就完成了。</p>
-<p><img src="/img//blog/dns-3.webp" alt="dns-setting"></p>
-<p>將example1.com設定完成後，再重複一樣的步驟，再example2.com指向同一個主機即可，因為我們剛剛在nginx設定就已經會將這兩個網域分別載入不同路徑下的html。</p>
-<p>設定完成後一般Godaddy都會跟你說要48小時內才會生效，但是其實大概五分鐘後就生效了。</p>
-<!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fringilla dui eu mi iaculis, sit amet congue lacus porta. Ut nec porta ex. Morbi nec massa sodales, finibus urna et, condimentum odio. Nulla ornare est ac egestas varius. Duis faucibus sapien non risus pretium vestibulum. Ut rutrum lorem ut euismod maximus. Vestibulum metus urna, ultrices nec sapien sit amet, malesuada tincidunt quam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque ornare ipsum quis leo mattis, et tincidunt lacus feugiat. Aenean non vestibulum metus, vitae mattis sapien. Maecenas ut tortor viverra, finibus risus blandit, ultrices elit. Etiam cursus felis imperdiet ultrices ullamcorper. Ut diam nibh, porttitor at mauris laoreet, laoreet suscipit tellus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras vitae blandit quam. -->
-        </div>
-        
-        <aside id="meta">
-          
-        </aside>
-      </div>
-
-      <button id="goTopButton">
-        <img class="scrollTop mx-auto" src="/img/upload.png" width="20" height="20" alt="">
-      </button>
+      <h2 class="text-4xl dark:text-white">Openai</h2>
       
-      <div class="bg-white dark:bg-warmgray-900 p-5 my-4">
-        <div class="mb-3">
-          <div id="disqus_thread"></div>
-<script>
+      
+      
+      
+      
+      <a href="/12days-of-openAI/">
+        <div
+    class="bg-white w-full p-3 lg:max-w-full lg:flex mb-4 transform hover:-translate-y-1 hover:shadow-md duration-500 dark:bg-warmgray-900">
     
-
     
+    <div class="list_img_box">
+        <img alt="thumbnail" id="thumb" class="list_img" src="/img/12-days-of-OpenAI.jpg" />
 
-    (function() { 
-    var d = document, s = d.createElement('script');
-    s.src = 'https://rdnotes-2.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        </div>
-      </div>
+    </div>
+    
+    
+    <div class="relative pl-4 p-2 justify-between leading-normal max-w-full w-full">
+        <div class="text-gray-900 font-bold text-xl mb-2 dark:text-white">全面解析 12 Days of OpenAI：有哪些新工具能改變你的工作方式？</div>
+        <p class="text-gray-700 text-base pb-5 dark:text-gray-300">
+            12 Days of OpenAI 是 OpenAI 推出的年度特別活動，旨在連續 12 天內公佈一系列重要更新與全新工具。這些工具與功能專為創作者、辦公室職員和科技愛好者設計，涵蓋內容創作、程式開發、日常生產力等多個領域。活動的目的是透過這些創新，進一步提升...</p>
+        
+    </div>
+</div>
+      </a>
+      
+      
+
     </div>
     
     <div class="hidden lg:block lg:col-span-1">
@@ -412,31 +284,11 @@ $ sudo vi nginx.conf
     
     
     
-    <div class="tableofcontent" style="position: sticky; top: 20px;">
-        <div id="TableofContentScroll" class="bg-white tableofcontent-container-side dark:bg-warmgray-900 dark:text-white" >
-            <div class="mx-6">
-                <p id="TableofContentTitle" class="toc-title">目錄</p>
-                <nav id="TableOfContents">
-  <ul>
-    <li><a href="#nginx設定">Nginx設定</a>
-      <ul>
-        <li><a href="#nginxconf">nginx.conf</a></li>
-      </ul>
-    </li>
-    <li><a href="#dns設定">DNS設定</a></li>
-  </ul>
-</nav>
-            </div>
-        </div>
-    </div>
-    
   
 </div>
     
-
   </div>
-</div>
-
+  
             </div>
         </div><footer class="bg-gray-800 text-white p-6">
   
@@ -479,8 +331,6 @@ $ sudo vi nginx.conf
     }
   </script>
 </footer></div>
-    
-    <script src="/js/index.js"></script>
     
 </body>
 
